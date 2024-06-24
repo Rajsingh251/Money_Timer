@@ -13,7 +13,7 @@ app = FastAPI()
 # Enable CORS
 app.add_middleware(
     CORSMiddleware,
-   allow_origins=["http://51.20.130.223:8000", "http://127.0.0.1:5501"],  # Update with your frontend's address
+    allow_origins=["http://51.20.130.223:8000", "http://127.0.0.1:5501"],  # Update with your frontend's address
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -224,4 +224,12 @@ async def points_info():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000, log_level="warning", reload=True)
+    uvicorn.run(
+        app,
+        host="0.0.0.0",
+        port=8000,
+        ssl_certfile="/etc/ssl/fastapi/cert.pem",  # Path to your SSL certificate
+        ssl_keyfile="/etc/ssl/fastapi/key.pem",    # Path to your SSL key
+        log_level="warning",
+        reload=True
+    )
