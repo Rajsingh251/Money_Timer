@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function updateTimersFromAPI() {
-        fetch('http://localhost:8000/points_info')
+        fetch('http://51.20.130.223:8000/points_info')
             .then(response => response.json())
             .then(data => {
                 remainingTime = parseFloat(data.points);
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function startTimer() {
-        fetch('http://localhost:8000/start_timer', {
+        fetch('http://51.20.130.223:8000/start_timer', {
             method: 'POST'
         })
         .then(response => response.json())
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function stopTimer() {
-        fetch('http://localhost:8000/stop_timer', {
+        fetch('http://51.20.130.223:8000/stop_timer', {
             method: 'POST'
         })
         .then(response => response.json())
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function resetTimer() {
-        fetch('http://localhost:8000/reset_timer', {
+        fetch('http://51.20.130.223:8000/reset_timer', {
             method: 'POST'
         })
         .then(response => response.json())
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function addPoints(amount) {
-        fetch('http://localhost:8000/add_points', {
+        fetch('http://51.20.130.223:8000/add_points', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
