@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
     const numberElement = document.getElementById('number');
     const remainingHoursElement = document.getElementById('remainingHours');
-    const REDUCE_AMOUNT_PER_SECOND = 2.7; // Points deducted every second
-    const TOTAL_DURATION_SECONDS = 8 * 60 * 60; // 8 hours in seconds
+    const REDUCE_AMOUNT_PER_SECOND = 2.7; / Points deducted every second
+    const TOTAL_DURATION_SECONDS = 8 * 60 * 60; / 8 hours in seconds
 
-    let remainingTime = 0; // Points counter (can be negative)
+    let remainingTime = 0; / Points counter (can be negative)
     let elapsedSeconds = 0;
-    let timerRunning = false; // Variable to track timer state
+    let timerRunning = false; / Variable to track timer state
 
     document.getElementById('resetButton').addEventListener('click', resetTimer);
     document.getElementById('startStopButton').addEventListener('click', function () {
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function updateTimersFromAPI() {
-        fetch('https://51.20.130.223/points_info')
+        fetch('https:/vzut7d6xvf.execute-api.eu-north-1.amazonaws.com/points_info')
             .then(response => response.json())
             .then(data => {
                 remainingTime = parseFloat(data.points);
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function startTimer() {
-        fetch('https://51.20.130.223/start_timer', {
+        fetch('https:/vzut7d6xvf.execute-api.eu-north-1.amazonaws.com/start_timer', {
             method: 'POST'
         })
         .then(response => response.json())
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function stopTimer() {
-        fetch('https://51.20.130.223/stop_timer', {
+        fetch('https:/vzut7d6xvf.execute-api.eu-north-1.amazonaws.com/stop_timer', {
             method: 'POST'
         })
         .then(response => response.json())
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function resetTimer() {
-        fetch('https://51.20.130.223/reset_timer', {
+        fetch('https:/vzut7d6xvf.execute-api.eu-north-1.amazonaws.com/reset_timer', {
             method: 'POST'
         })
         .then(response => response.json())
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function addPoints(amount) {
-        fetch('https://51.20.130.223/add_points', {
+        fetch('https:/vzut7d6xvf.execute-api.eu-north-1.amazonaws.com/add_points', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -133,9 +133,9 @@ document.addEventListener('DOMContentLoaded', function () {
         button.textContent = timerRunning ? 'Stop Timer' : 'Start Timer';
     }
 
-    // Fetch data and update every second
+    / Fetch data and update every second
     setInterval(updateTimersFromAPI, 500);
 
-    // Initial call to fetch data
+    / Initial call to fetch data
     updateTimersFromAPI();
 });
