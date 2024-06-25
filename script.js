@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function updateTimersFromAPI() {
-        fetch('https://51.20.130.223/points_info')
+        fetch('https://vzut7d6xvf.execute-api.eu-north-1.amazonaws.com/points_info')
             .then(response => response.json())
             .then(data => {
                 remainingTime = parseFloat(data.points);
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function startTimer() {
-        fetch('https://51.20.130.223/start_timer', {
+        fetch('https://vzut7d6xvf.execute-api.eu-north-1.amazonaws.com/start_timer', {
             method: 'POST'
         })
         .then(response => response.json())
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function stopTimer() {
-        fetch('https://51.20.130.223/stop_timer', {
+        fetch('https://vzut7d6xvf.execute-api.eu-north-1.amazonaws.com/stop_timer', {
             method: 'POST'
         })
         .then(response => response.json())
@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function resetTimer() {
-        fetch('https://51.20.130.223/reset_timer', {
+        fetch('https://vzut7d6xvf.execute-api.eu-north-1.amazonaws.com/reset_timer', {
             method: 'POST'
         })
         .then(response => response.json())
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function addPoints(amount) {
-        fetch('https://51.20.130.223/add_points', {
+        fetch('https://vzut7d6xvf.execute-api.eu-north-1.amazonaws.com/add_points', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
