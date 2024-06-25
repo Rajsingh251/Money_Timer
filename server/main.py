@@ -13,7 +13,7 @@ app = FastAPI()
 # Enable CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://51.20.130.223:8000", "http://127.0.0.1:5501","https://rajsingh251.github.io"],  # Update with your frontend's address
+    allow_origins=["http://51.20.130.223:8000", "http://127.0.0.1:8000","https://rajsingh251.github.io"],  # Update with your frontend's address
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
